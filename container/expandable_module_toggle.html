@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandable Modules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .module {
+            flex: 1 1 calc(50% - 10px); /* Two modules per row */
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .module.expanded {
+            flex-basis: 100%;
+        }
+
+        .module-content {
+            display: none;
+        }
+
+        .module.expanded .module-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="module" onclick="toggleModule(this)">
+        <h3>Module 1</h3>
+        <div class="module-content">
+            <p>This is some content for module 1.</p>
+        </div>
+    </div>
+    <div class="module" onclick="toggleModule(this)">
+        <h3>Module 2</h3>
+        <div class="module-content">
+            <p>This is some content for module 2.</p>
+        </div>
+    </div>
+    <div class="module" onclick="toggleModule(this)">
+        <h3>Module 3</h3>
+        <div class="module-content">
+            <p>This is some content for module 3.</p>
+        </div>
+    </div>
+    <div class="module" onclick="toggleModule(this)">
+        <h3>Module 4</h3>
+        <div class="module-content">
+            <p>This is some content for module 4.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleModule(element) {
+        const isExpanded = element.classList.contains('expanded');
+        const modules = document.querySelectorAll('.module');
+        modules.forEach(module => module.classList.remove('expanded'));
+        if (!isExpanded) {
+            element.classList.add('expanded');
+        }
+    }
+</script>
+
+</body>
+</html>
